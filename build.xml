@@ -1,0 +1,21 @@
+<project name="epub3" default="dist" basedir=".">
+	<property name="books.src" location="books"/>
+	<property name="books.dest" location="dist/books"/>
+
+	<target name="prepare">
+		<delete dir="dist" failonerror="false" />
+		<mkdir dir="${books.dest}"/>
+	</target>
+	
+	<target name="books" depends="prepare">
+		<zip destfile="${books.dest}/minimal.epub" 
+			basedir="${books.src}/minimal" 
+			update="true" />
+		<zip destfile="${books.dest}/sandbox.epub" 
+			basedir="${books.src}/sandbox" 
+			update="true" />
+	</target>
+
+	<target name="dist" depends="books">
+	</target>
+</project>
