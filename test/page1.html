@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta charset="utf-8" />
+        <script src="../src/libs/jquery-1.7.1.min.js"></script>
+        <script src="../src/js/playercontroller.js"></script>
+        <script src="../src/js/icplayer.js"></script>
+        
+        
+        <!-- Include addons  --> 
+        <script src="../src/js/modules/debug/presenter.js"></script>
+        <link rel="stylesheet" type="text/css" href="../src/js/modules/debug/style.css" />
+        <script src="../src/js/modules/puzzle/presenter.js"></script>
+        <link rel="stylesheet" type="text/css" href="../src/js/modules/puzzle/style.css" />
+        
+    </head>
+    <body class="reflow" >
+    	<p>Puzzle</p>
+		<div id="puzzle1" module="Puzzle" style="">
+			<model>
+				<property name="Width" value="640" />
+				<property name="Height" value="480" />
+				<property name="Columns" value="4" />
+				<property name="Rows" value="4" />
+				<property name="Image" value="resources/golden.jpg" />
+			</model>
+			<div class="puzzle-container">
+			    <div>
+			        <img alt="Image" src="" style="visibility: hidden" />
+			    </div>
+			</div>
+		</div>		
+
+		<p>Debug</p>
+		<div id="debug2" module="Debug">
+			<model>
+				<property name="Image" type="string" value="Ala ma kota"/>
+				<property name="Text" type="string" value="Second module"/>
+			</model>
+			<div>
+				<p class='debugGreen'>${mytext}</p>
+				<button id='mybutton'>Click me! </button>
+			</div>
+		</div>		
+        
+    </body>
+</html>

@@ -1,4 +1,3 @@
-
 ModuleRuntime.registerModule("Debug", AddonDebug_create);
 
 function AddonDebug_create(){
@@ -18,7 +17,7 @@ function AddonDebug_create(){
 	presenter.run = function(view, model){
 		
 		element = view.getElementsByTagName('p')[0];
-		element.innerHTML = "Picture:" + model['Picture'];
+		element.innerHTML = "Picture:" + model['Text'];
 			
 		var button = document.getElementById('mybutton');
 		button.onclick=function(){

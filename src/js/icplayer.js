@@ -6,6 +6,7 @@
 
 var ModuleRuntime = {
 	factories: {},
+	playerController: new PlayerController(),
 	
 	registerModule: function(typeName, presenter){
 		this.factories[typeName] = presenter
@@ -32,10 +33,9 @@ var ModuleRuntime = {
 	
 	_loadModule: function(element, factory){
 		var model = this._loadModel(element);
-		console.log("Model for: " + element);
-		for(var propertyName in model){
-			console.log(propertyName + ": " + model[propertyName]);
-		}
+		var presenter = factory();
+		presenter.setPlayerController(this.playerController);
+		presenter.run(element, model);
 	},
 	
 	_loadModel: function(element){
