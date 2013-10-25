@@ -4,7 +4,6 @@
         <meta charset="utf-8" />
         <script src="../src/libs/jquery-1.7.1.min.js"></script>
         <script src="../src/js/playercontroller.js"></script>
-        <script src="../src/js/textparser.js"></script>
         <script src="../src/js/icplayer.js"></script>
         
         
@@ -19,15 +18,22 @@
     </head>
     <body class="reflow" >
 
-		<p>Text</p>
-		<div module="Text">
+    	<p>Puzzle</p>
+		<div id="puzzle1" module="Puzzle" style="">
 			<model>
+				<property name="Width" value="640" />
+				<property name="Height" value="480" />
 				<property name="isVisible" value="true"/>
+				<property name="Columns" value="4" />
+				<property name="Rows" value="4" />
+				<property name="Image" value="resources/golden.jpg" />
 			</model>
-			<div>
-				This is editable gap \gap{answer}.
-				This is drop down \choice{answer|wrong A|wrong B}.
+			<div class="puzzle-container">
+			    <div>
+			        <img alt="Image" src="" style="visibility: hidden" />
+			    </div>
 			</div>
-		</div>
+		</div>		
+        
     </body>
 </html>

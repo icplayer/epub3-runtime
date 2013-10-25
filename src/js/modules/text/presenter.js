@@ -12,15 +12,9 @@ function AddonText_create(){
 	
 	
 	presenter.run = function(view, model){
-		
-		element = view.getElementsByTagName('p')[0];
-		element.innerHTML = "Picture:" + model['Text'];
-			
-		var button = document.getElementById('mybutton');
-		button.onclick=function(){
-			var module = playerController.getModule('ig1');
-			module.hide();
-		};
+		element = view.getElementsByTagName('div')[0];
+		var parsedText = parseText(element.innerHTML);
+		element.innerHTML = parsedText;
 	}
 
 	

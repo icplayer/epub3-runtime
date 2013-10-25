@@ -45,7 +45,13 @@ var ModuleRuntime = {
 		propertyNodes.each(function(){
 			var name = $(this).attr("name");
 			var value = $(this).attr("value");
-			model[name] = value;
+			if(value != null){
+				model[name] = value;
+			}
+			else{
+				console.log("Text:" + $(this).html());
+			}
+		
 		});
 		return model;
 	}
