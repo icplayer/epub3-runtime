@@ -3,6 +3,7 @@
     <head>
         <meta charset="utf-8" />
         <script src="../src/libs/jquery-1.7.1.min.js"></script>
+        <script src="../src/js/eventbus.js"></script>
         <script src="../src/js/playercontroller.js"></script>
         <script src="../src/js/textparser.js"></script>
         <script src="../src/js/icplayer.js"></script>
@@ -15,11 +16,13 @@
         <link rel="stylesheet" type="text/css" href="../src/js/modules/puzzle/style.css" />
         <script src="../src/js/modules/text/presenter.js"></script>
         <link rel="stylesheet" type="text/css" href="../src/js/modules/text/style.css" />
+        <script src="../src/js/modules/check/presenter.js"></script>
+        <link rel="stylesheet" type="text/css" href="../src/js/modules/check/style.css" />
         
     </head>
     <body class="reflow" >
 
-		<p>Text</p>
+		<h3>Text</h3>
 		<div module="Text">
 			<model>
 				<property name="isVisible" value="true"/>
@@ -28,6 +31,20 @@
 				This is editable gap \gap{answer}.
 				This is drop down \choice{answer|wrong A|wrong B}.
 			</div>
+		</div>
+		<div module="Check" class="ic_check">
+			<model>
+				<property name="isVisible" value="true"/>
+			</model>
+			<button>Check</button>
+		</div>
+		
+		<h3>Debug</h3>
+		<div module="Debug">
+			<model>
+				<property name="isVisible" value="true"/>
+			</model>
+			<p class='eventMonitor'>No events</p>
 		</div>
     </body>
 </html>

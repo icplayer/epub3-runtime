@@ -1,0 +1,4 @@
+1. Add event handlers for:
+	* Work mode
+	* Show errors mode
+	* Reset

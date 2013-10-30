@@ -6,7 +6,9 @@
 
 function PlayerController() {
 	
+	var eventBus = new EventBus();
+	
 	this.getEventBus = function(){
-		return null;
+		return eventBus;
 	}
 }
