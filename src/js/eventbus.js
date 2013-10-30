@@ -1,5 +1,5 @@
 /*
- * Runtime for activities embedded in html page.
+ * Event bus implementation
  * 
  * @author Krzysztof Langner
  */
