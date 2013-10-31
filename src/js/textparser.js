@@ -6,9 +6,16 @@
 
 function parseText(inputText) {
 	var idCounter = 1;
-	var parsedGaps = parseGaps(inputText);
-	var parsedChoices = parseChoices(parsedGaps);
-	return parsedChoices;
+	var gaps = [];
+	var choices = [];
+	var text = parse(inputText);
+	return {text: text};
+	
+	
+	function parse(text){
+		var parsed = parseGaps(text);
+		return parseChoices(parsed);
+	}
 	
 	function parseGaps(text){
 		var input = text;
