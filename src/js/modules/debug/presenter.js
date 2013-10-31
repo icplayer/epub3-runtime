@@ -6,10 +6,12 @@ function AddonDebug_create(){
 
 	var outputView;
 	var playerController;
+	var eventBus;
 	
 	
 	presenter.setPlayerController = function(service){
-		playerController = service;
+		this.playerController = service;
+		this.eventBus = service.getEventBus();
 	}
 	
 	presenter.onEventReceived = function(eventName, eventData){
@@ -19,22 +21,21 @@ function AddonDebug_create(){
 			html += key + ":" + eventData[key] + " | ";
 		}
 		outputView.innerHTML = html;
-		console.log(html);
 	}
 	
 	
 	presenter.run = function(view, model){
 		outputView = view;				
-		playerController.getEventBus().addEventListener('ItemSelected', this);
-		playerController.getEventBus().addEventListener('ItemConsumed', this);
-		playerController.getEventBus().addEventListener('ItemReturned', this);
-		playerController.getEventBus().addEventListener('ValueChanged', this);
-		playerController.getEventBus().addEventListener('Definition', this);
-		playerController.getEventBus().addEventListener('AllOk', this);
-		playerController.getEventBus().addEventListener('PageLoaded', this);
-		playerController.getEventBus().addEventListener('ShowErrors', this);
-		playerController.getEventBus().addEventListener('WorkMode', this);
-		playerController.getEventBus().addEventListener('Reset', this);
+		this.eventBus.addEventListener('ItemSelected', this.onEventReceived);
+		this.eventBus.addEventListener('ItemConsumed', this.onEventReceived);
+		this.eventBus.addEventListener('ItemReturned', this.onEventReceived);
+		this.eventBus.addEventListener('ValueChanged', this.onEventReceived);
+		this.eventBus.addEventListener('Definition', this.onEventReceived);
+		this.eventBus.addEventListener('AllOk', this.onEventReceived);
+		this.eventBus.addEventListener('PageLoaded', this.onEventReceived);
+		this.eventBus.addEventListener('ShowErrors', this.onEventReceived);
+		this.eventBus.addEventListener('WorkMode', this.onEventReceived);
+		this.eventBus.addEventListener('Reset', this.onEventReceived);
 	}
 
 	return presenter;
