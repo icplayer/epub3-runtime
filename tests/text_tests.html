@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta charset="utf-8" />
+        <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+        <link rel="stylesheet" href="http://code.jquery.com/qunit/qunit-1.12.0.css">
+        <script src="../src/js/eventbus.js"></script>
+        <script src="../src/js/playercontroller.js"></script>
+        <script src="../src/js/icplayer.js"></script>
+        
+        
+        <!-- Include modules  --> 
+        <script src="../src/js/modules/libs/textparser.js"></script>
+        <script src="../src/js/modules/text/presenter.js"></script>
+        <link rel="stylesheet" type="text/css" href="../src/js/modules/text/style.css" />
+        <script src="../src/js/modules/check/presenter.js"></script>
+        <link rel="stylesheet" type="text/css" href="../src/js/modules/check/style.css" />
+        
+    </head>
+    <body class="reflow" >
+		<div id="qunit"></div>
+		<div id="qunit-fixture"></div>
+		<script src="http://code.jquery.com/qunit/qunit-1.12.0.js"></script>
+		<script src="js/modules/text/presenter_tests.js"></script>
+
+		<h3>Text 1</h3>
+		<div module="Text">
+			<model>
+				<property name="id" value="cloze1"/>
+				<property name="isVisible" value="true"/>
+			</model>
+			<div>
+				This is an editable gap \gap{correct}.
+				This is a drop down \choice{correct|wrong A|wrong B}.
+			</div>
+		</div>
+    </body>
+</html>

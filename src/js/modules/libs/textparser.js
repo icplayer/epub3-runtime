@@ -27,7 +27,6 @@ function parseText(inputText, baseId) {
 			var end = input.indexOf("}");
 			var answers = input.substring(0, end);
 			var id = getNextId();
-			idCounter += 1;
 			var html = "<input id='" + id + "' type='edit' class='ic_gap'/>";
 			output += html;
 			gaps.push({id: id, answer: answers});

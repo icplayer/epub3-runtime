@@ -20,7 +20,6 @@ test( "Parse gap", function() {
 	equal(gap.answer, "answer", "Check gap answer");
 });
 
-
 test( "Parse inline choice", function() {
 	var parsedText = parseText("This is a \\choice{correct|ala|ola}", "cloze1");
 	var expected =  "This is a " + 
@@ -34,4 +33,12 @@ test( "Parse inline choice", function() {
 	var gap = parsedText.choices[0];
 	equal(gap.id, "cloze1-1", "Check gap id");
 	equal(gap.answer, "correct", "Check gap answer");
+});
+
+test( "Check ids", function() {
+	var parsedText = parseText("This is a \\gap{answer} and a \\choice{correct|ala|ola}", "cloze1");
+	var gap = parsedText.gaps[0];
+	equal(gap.id, "cloze1-1", "Wrong gap id");
+	var choice = parsedText.choices[0];
+	equal(choice.id, "cloze1-2", "Wrong choice id");
 });
