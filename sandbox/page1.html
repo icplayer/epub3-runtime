@@ -5,11 +5,11 @@
         <script src="../src/libs/jquery-1.7.1.min.js"></script>
         <script src="../src/js/eventbus.js"></script>
         <script src="../src/js/playercontroller.js"></script>
-        <script src="../src/js/textparser.js"></script>
         <script src="../src/js/icplayer.js"></script>
         
         
-        <!-- Include addons  --> 
+        <!-- Include modules  --> 
+        <script src="../src/js/modules/libs/textparser.js"></script>
         <script src="../src/js/modules/debug/presenter.js"></script>
         <link rel="stylesheet" type="text/css" href="../src/js/modules/debug/style.css" />
         <script src="../src/js/modules/puzzle/presenter.js"></script>
@@ -28,8 +28,8 @@
 				<property name="isVisible" value="true"/>
 			</model>
 			<div>
-				This is editable gap \gap{answer}.
-				This is drop down \choice{answer|wrong A|wrong B}.
+				This is an editable gap \gap{correct}.
+				This is a drop down \choice{correct|wrong A|wrong B}.
 			</div>
 		</div>
 		<div module="Check" class="ic_check">
