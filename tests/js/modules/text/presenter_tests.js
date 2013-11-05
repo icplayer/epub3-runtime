@@ -22,6 +22,54 @@ test( "In ShowErrors mode gap should be disabled", function() {
 	var gap = $('#cloze1-1');
 	var eventBus = ModuleRuntime.playerController.getEventBus();
 	eventBus.sendEvent("ShowErrors", {});
-	ok(gap.is(':disabled') == true, "Gap should be disabled")
+	ok(gap.is(':disabled') == true, "Gap should be disabled");
 	eventBus.sendEvent("Reset", {});
+});
+
+test( "Check error style in In ShowErrors mode", function() {
+	var gap = $('#cloze1-1');
+	gap.val("wrong");
+	var eventBus = ModuleRuntime.playerController.getEventBus();
+	eventBus.sendEvent("ShowErrors", {});
+	ok(gap.hasClass("ic_gap-wrong"), "Gap should have class wrong");
+	eventBus.sendEvent("Reset", {});
+	ok( !gap.hasClass("ic_gap-wrong"), "Clear wrong class");
+});
+
+test( "Check correct style in In ShowErrors mode", function() {
+	var gap = $('#cloze1-1');
+	gap.val("correct");
+	var eventBus = ModuleRuntime.playerController.getEventBus();
+	eventBus.sendEvent("ShowErrors", {});
+	ok(gap.hasClass("ic_gap-correct"), "Gap should have class correct");
+	eventBus.sendEvent("Reset", {});
+	ok( !gap.hasClass("ic_gap-correct"), "Clear correct class");
+});
+
+test( "In ShowErrors mode choice should be disabled", function() {
+	var gap = $('#cloze1-2');
+	var eventBus = ModuleRuntime.playerController.getEventBus();
+	eventBus.sendEvent("ShowErrors", {});
+	ok(gap.is(':disabled') == true, "Choice should be disabled")
+	eventBus.sendEvent("Reset", {});
+});
+
+test( "Check choice error style in In ShowErrors mode", function() {
+	var gap = $('#cloze1-2');
+	gap.val("ala");
+	var eventBus = ModuleRuntime.playerController.getEventBus();
+	eventBus.sendEvent("ShowErrors", {});
+	ok(gap.hasClass("ic_inlineChoice-wrong"), "Gap should have class wrong");
+	eventBus.sendEvent("Reset", {});
+	ok( !gap.hasClass("ic_inlineChoice-wrong"), "Clear wrong class");
+});
+
+test( "Check choice correct style in In ShowErrors mode", function() {
+	var gap = $('#cloze1-2');
+	gap.val("correct");
+	var eventBus = ModuleRuntime.playerController.getEventBus();
+	eventBus.sendEvent("ShowErrors", {});
+	ok(gap.hasClass("ic_inlineChoice-correct"), "Gap should have class correct");
+	eventBus.sendEvent("Reset", {});
+	ok( !gap.hasClass("ic_inlineChoice-correct"), "Clear correct class");
 });

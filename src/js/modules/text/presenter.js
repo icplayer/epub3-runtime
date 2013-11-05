@@ -23,6 +23,10 @@ function AddonText_create(){
 			var gap = parsedText.gaps[i];
 			widgets.push(new GapWidget(gap.id, gap.answer));
 		}
+		for(var i in parsedText.choices){
+			var choice = parsedText.choices[i];
+			widgets.push(new ChoiceWidget(choice.id, choice.answer));
+		}
 	}
 
 	
@@ -62,14 +66,59 @@ function GapWidget(id, answer){
 
 	this.setWorkMode = function(){
 		element.prop('disabled', false);
+		element.removeClass("ic_gap-wrong");
+		element.removeClass("ic_gap-correct");
 	}
 	
 	this.setShowErrorsMode = function(){
 		element.prop('disabled', true);
+		if(isCorrect()){
+			element.addClass("ic_gap-correct");
+		}
+		else{
+			element.addClass("ic_gap-wrong");
+		}
 	}
 	
 	this.reset = function(){
+		this.setWorkMode();
+	}
+	
+	function isCorrect(){
+		var text = element.val();
+		return text == answer;
+	}
+
+	return this;
+}
+
+
+function ChoiceWidget(id, answer){
+	var element = $('#' + id);
+
+	this.setWorkMode = function(){
 		element.prop('disabled', false);
+		element.removeClass("ic_inlineChoice-wrong");
+		element.removeClass("ic_inlineChoice-correct");
+	}
+	
+	this.setShowErrorsMode = function(){
+		element.prop('disabled', true);
+		if(isCorrect()){
+			element.addClass("ic_inlineChoice-correct");
+		}
+		else{
+			element.addClass("ic_inlineChoice-wrong");
+		}
+	}
+	
+	this.reset = function(){
+		this.setWorkMode();
+	}
+
+	function isCorrect(){
+		var text = element.val();
+		return text == answer;
 	}
 
 	return this;
