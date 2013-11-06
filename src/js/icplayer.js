@@ -33,6 +33,7 @@ var ModuleRuntime = {
 	
 	_loadModule: function(element, factory){
 		var model = this._loadModel(element);
+		$(element).children("model").remove();
 		var presenter = factory();
 		presenter.setPlayerController(this.playerController);
 		presenter.run(element, model);
@@ -49,7 +50,7 @@ var ModuleRuntime = {
 				model[name] = value;
 			}
 			else{
-				console.log("Text:" + $(this).html());
+				model[name] = $(this).text();
 			}
 		
 		});

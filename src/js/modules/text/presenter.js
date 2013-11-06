@@ -17,7 +17,7 @@ function AddonText_create(){
 	
 	presenter.run = function(view, model){
 		element = view.getElementsByTagName('div')[0];
-		var parsedText = parseText(element.innerHTML, model.id);
+		var parsedText = parseText(model.text, model.id);
 		element.innerHTML = parsedText.text;
 		for(var i in parsedText.gaps){
 			var gap = parsedText.gaps[i];
