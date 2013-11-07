@@ -32,33 +32,46 @@ var ModuleRuntime = {
 	},
 	
 	_loadModule: function(element, factory){
-		var model = this._loadModel(element);
+		var model = this._initModel(element);
 		$(element).children("model").remove();
 		var presenter = factory();
 		presenter.setPlayerController(this.playerController);
 		presenter.run(element, model);
 	},
 	
-	_loadModel: function(element){
-		var parent = $(element);
-		var model = {};
-		var propertyNodes = $(parent.children("model")[0]).find("property");
-		propertyNodes.each(function(){
-			var name = $(this).attr("name");
-			var value = $(this).attr("value");
-			if(value != null){
-				model[name] = value;
-			}
-			else{
-				model[name] = $(this).text();
-			}
-		
-		});
+	_initModel: function(element){
+		var model = loadModel($(element).children("model")[0]);
 		return model;
 	}
 	
 }
 
+
+function loadModel(modelElement){
+	var model = {};
+	var propertyNodes = $(modelElement).find("property");
+	propertyNodes.each(function(){
+		var name = $(this).attr("name");
+		var value = $(this).attr("value");
+		var type = $(this).attr("type");
+		if(type == "list"){
+			var items = $(this).find("item");
+			var properties = [];
+			$(this).find("item").each(function(){
+				properties.push(loadModel(this));
+			});
+			model[name] = properties;
+		}
+		else if(value != null){
+			model[name] = value;
+		}
+		else{
+			model[name] = $(this).text();
+		}
+	
+	});
+	return model;
+}
 
 
 $(function() {
