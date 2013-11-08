@@ -26,12 +26,48 @@
 				<property name="id" value="choice1"/>
 				<property name="isVisible" value="true"/>
 				<property name="isMulti" value="false"/>
+				<property name="options" type="list">
+					<items>
+						<item>
+							<property name="score" value="0"/>
+							<property name="text">This is wrong answer A</property>
+						</item>
+						<item>
+							<property name="score" value="1"/>
+							<property name="text">This is correct answer B</property>
+						</item>
+						<item>
+							<property name="score" value="0"/>
+							<property name="text">This is wrong answer C</property>
+						</item>
+					</items>
+				</property>
 			</model>
-			<ul>
-				<li score="0">This is wrong answer A</li>
-				<li score="1">This is correct answer B</li>
-				<li score="0">This is wrong answer C</li>
-			</ul>
+		</div>
+		
+		<h3>Choice 2</h3>
+		<div module="Choice">
+			<model>
+				<property name="id" value="choice2"/>
+				<property name="isVisible" value="true"/>
+				<property name="isMulti" value="true"/>
+				<property name="options" type="list">
+					<items>
+						<item>
+							<property name="score" value="0"/>
+							<property name="text">This is wrong answer A</property>
+						</item>
+						<item>
+							<property name="score" value="1"/>
+							<property name="text">This is correct answer B</property>
+						</item>
+						<item>
+							<property name="score" value="1"/>
+							<property name="text">This is correct answer C</property>
+						</item>
+					</items>
+				</property>
+			</model>
 		</div>
     </body>
 </html>
