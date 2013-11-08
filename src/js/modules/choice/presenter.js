@@ -6,6 +6,7 @@ function Choice_create(){
 	var playerServices = null;
 	var eventBus;
 	var isMulti = false;
+	var widgets = [];
 
 	
 	presenter.setPlayerController = function(services){
@@ -16,18 +17,18 @@ function Choice_create(){
 	
 	presenter.run = function(view, model){
 		isMulti = (model.isMulti == "true");
-		var html = createViewHtml(view, model);
-		$(view).html(html);
+		createViewHtml(view, model);
+		this._connectEvents();
 	}
 	
 	
 	function createViewHtml(element, model){
 		element.id = model.id;
-		var html = "";
 		for( var index in model.options){
 			var option = model.options[index];
-			var optionId = model.id + "-" + index;
-			html += "<div>";
+			var optionIndex = parseInt(index)+1;
+			var optionId = model.id + "-" + optionIndex;
+			var html = "<div>";
 			if(isMulti){
 				html += "<input type='checkbox' name='" + model.id + "' id='" + optionId + "'/>";
 			}
@@ -35,9 +36,74 @@ function Choice_create(){
 				html += "<input type='radio' name='" + model.id + "' id='" + optionId + "'/>";
 			}
 			html += "<label for='" + optionId + "'>" + option.text + "</label></div>";
+			$(html).appendTo(element);
+			widgets.push(new OptionWidget(optionId, option.score, isMulti));
 		}
-		return html;
 	}
 	
+	presenter._connectEvents = function(){
+		this.eventBus.addEventListener('ShowErrors', this.setShowErrorsMode);
+		this.eventBus.addEventListener('WorkMode', this.setWorkMode);
+		this.eventBus.addEventListener('Reset', this.reset);
+	}
+	
+	 presenter.setWorkMode = function () {
+		 for(var i in widgets){
+			 var gap = widgets[i];
+			 gap.setWorkMode();
+		 }
+	 }
+
+	 presenter.setShowErrorsMode = function () {
+		 for(var i in widgets){
+			 var gap = widgets[i];
+			 gap.setShowErrorsMode();
+		 }
+	 }
+
+	 presenter.reset = function () {
+		 for(var i in widgets){
+			 var gap = widgets[i];
+			 gap.reset();
+		 }
+	 }
+	 
 	return presenter;
+}
+
+function OptionWidget(id, score, isMulti){
+	var element = $('#' + id);
+
+	this.setWorkMode = function(){
+		element.prop('disabled', false);
+		element.removeClass(getBaseClass() + "-wrong");
+		element.removeClass(getBaseClass() + "-correct");
+	}
+	
+	this.setShowErrorsMode = function(){
+		element.prop('disabled', true);
+		if(element.is(':checked')){
+			if(isCorrect()){
+				element.addClass(getBaseClass() + "-correct");
+			}
+			else{
+				element.addClass(getBaseClass() + "-wrong");
+			}
+		}
+	}
+	
+	this.reset = function(){
+		this.setWorkMode();
+	}
+
+	function isCorrect(){
+		return score > 0;
+	}
+	
+	function getBaseClass(){
+		if(isMulti) return "ic_moption";
+		else return "ic_soption";
+	}
+
+	return this;
 }
