@@ -28,12 +28,14 @@ function Choice_create(){
 			var option = model.options[index];
 			var optionIndex = parseInt(index)+1;
 			var optionId = model.id + "-" + optionIndex;
-			var html = "<div>";
+			var html = "<div id='" + optionId + "' ";
 			if(isMulti){
-				html += "<input type='checkbox' name='" + model.id + "' id='" + optionId + "'/>";
+				html += "class='ic_moption'>";
+				html += "<input type='checkbox' name='" + model.id + "'/>";
 			}
 			else{
-				html += "<input type='radio' name='" + model.id + "' id='" + optionId + "'/>";
+				html += "class='ic_soption'>";
+				html += "<input type='radio' name='" + model.id + "'/>";
 			}
 			html += "<label for='" + optionId + "'>" + option.text + "</label></div>";
 			$(html).appendTo(element);
@@ -73,16 +75,17 @@ function Choice_create(){
 
 function OptionWidget(id, score, isMulti){
 	var element = $('#' + id);
+	var button = element.find('input:first');
 
 	this.setWorkMode = function(){
-		element.prop('disabled', false);
+		button.prop('disabled', false);
 		element.removeClass(getBaseClass() + "-wrong");
 		element.removeClass(getBaseClass() + "-correct");
 	}
 	
 	this.setShowErrorsMode = function(){
-		element.prop('disabled', true);
-		if(element.is(':checked')){
+		button.prop('disabled', true);
+		if(button.is(':checked')){
 			if(isCorrect()){
 				element.addClass(getBaseClass() + "-correct");
 			}
