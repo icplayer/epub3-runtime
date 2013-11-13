@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta charset="utf-8" />
+        <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+        <link rel="stylesheet" href="http://code.jquery.com/qunit/qunit-1.12.0.css">
+        <script src="../src/js/eventbus.js"></script>
+        <script src="../src/js/playercontroller.js"></script>
+        <script src="../src/js/icplayer.js"></script>
+        
+        
+        <!-- Include modules  --> 
+        <script src="../src/js/modules/ordering/presenter.js"></script>
+        <link rel="stylesheet" type="text/css" href="../src/js/modules/ordering/style.css" />
+        <script src="../src/js/modules/check/presenter.js"></script>
+        <link rel="stylesheet" type="text/css" href="../src/js/modules/check/style.css" />
+        
+    </head>
+    <body class="reflow" >
+		<div id="qunit"></div>
+		<div id="qunit-fixture"></div>
+		<script src="http://code.jquery.com/qunit/qunit-1.12.0.js"></script>
+		<script src="js/modules/ordering/presenter_tests.js"></script>
+
+		<h3>Ordering</h3>
+		<div module="Ordering">
+			<model>
+				<property name="id" value="ordering1"/>
+			</model>
+		</div>
+    </body>
+</html>
