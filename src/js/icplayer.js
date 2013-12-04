@@ -66,7 +66,7 @@ function loadModel(modelElement){
 			model[name] = value;
 		}
 		else{
-			model[name] = $(this).text();
+			model[name] = $(this).html();
 		}
 	
 	});

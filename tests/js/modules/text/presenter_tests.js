@@ -6,6 +6,11 @@
 
 module ("Text module")
 
+test( "Check html text", function() {
+	var ps = $('#cloze1 > p');
+	ok(ps.length == 2, "Check number of paragraphs" );
+});
+
 test( "Find gap by id", function() {
 	var gap = $('#cloze1-1');
 	ok(gap.length == 1, "Can't find gap" );

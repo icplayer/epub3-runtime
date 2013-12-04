@@ -18,6 +18,7 @@ function AddonText_create(){
 	presenter.run = function(view, model){
 		var parsedText = parseText(model.text, model.id);
 		view.innerHTML = parsedText.text;
+		view.id = model.id;
 		for(var i in parsedText.gaps){
 			var gap = parsedText.gaps[i];
 			widgets.push(new GapWidget(gap.id, gap.answer));
