@@ -9,7 +9,8 @@ module ("Runtime")
 function html2dom(xmlString){
 	var parser = new DOMParser();
 	var html = "<div>" + xmlString + "</div>";
-	return parser.parseFromString(html, "text/xml").firstChild;
+	element = parser.parseFromString(html, "text/xml").firstChild;
+	return element;
 }
 
 test( "Create basic model", function() {
@@ -25,7 +26,7 @@ test( "Create basic model", function() {
 
 test( "Property with text", function() {
 	var html = "<model> \
-					<property name='text'>Sample text</property> \
+					<property name='text'><p>Sample text</p></property> \
 				</model>";
 	var element = html2dom(html);
 	var model = ModuleRuntime._initModel(element);

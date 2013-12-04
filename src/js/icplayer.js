@@ -66,10 +66,17 @@ function loadModel(modelElement){
 			model[name] = value;
 		}
 		else{
-			model[name] = $(this).html();
+			if(this.innerHTML){
+				model[name] = $(this).html();
+			}
+			else{
+				model[name] = $(this).text();
+			}
 		}
-	
 	});
+	if("id" in model){
+		model.id = model.id.replace(' ', '_');
+	}
 	return model;
 }
 

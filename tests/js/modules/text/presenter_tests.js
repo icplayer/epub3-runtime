@@ -7,24 +7,24 @@
 module ("Text module")
 
 test( "Check html text", function() {
-	var ps = $('#cloze1 > p');
+	var ps = $('#cloze_1 > p');
 	ok(ps.length == 2, "Check number of paragraphs" );
 });
 
 test( "Find gap by id", function() {
-	var gap = $('#cloze1-1');
+	var gap = $('#cloze_1-1');
 	ok(gap.length == 1, "Can't find gap" );
 	ok(gap.is(':disabled') == false, "Shouldn't be disabled")
 });
 
 test( "Find choice by id", function() {
-	var gap = $('#cloze1-2');
+	var gap = $('#cloze_1-2');
 	ok(gap.length == 1, "Can't find choice" );
 	ok(gap.is(':disabled') == false, "Shouldn't be disabled")
 });
 
 test( "In ShowErrors mode gap should be disabled", function() {
-	var gap = $('#cloze1-1');
+	var gap = $('#cloze_1-1');
 	var eventBus = ModuleRuntime.playerController.getEventBus();
 	eventBus.sendEvent("ShowErrors", {});
 	ok(gap.is(':disabled') == true, "Gap should be disabled");
@@ -32,7 +32,7 @@ test( "In ShowErrors mode gap should be disabled", function() {
 });
 
 test( "Check error style in In ShowErrors mode", function() {
-	var gap = $('#cloze1-1');
+	var gap = $('#cloze_1-1');
 	gap.val("wrong");
 	var eventBus = ModuleRuntime.playerController.getEventBus();
 	eventBus.sendEvent("ShowErrors", {});
@@ -42,7 +42,7 @@ test( "Check error style in In ShowErrors mode", function() {
 });
 
 test( "Check correct style in In ShowErrors mode", function() {
-	var gap = $('#cloze1-1');
+	var gap = $('#cloze_1-1');
 	gap.val("correct");
 	var eventBus = ModuleRuntime.playerController.getEventBus();
 	eventBus.sendEvent("ShowErrors", {});
@@ -52,7 +52,7 @@ test( "Check correct style in In ShowErrors mode", function() {
 });
 
 test( "In ShowErrors mode choice should be disabled", function() {
-	var gap = $('#cloze1-2');
+	var gap = $('#cloze_1-2');
 	var eventBus = ModuleRuntime.playerController.getEventBus();
 	eventBus.sendEvent("ShowErrors", {});
 	ok(gap.is(':disabled') == true, "Choice should be disabled")
@@ -60,7 +60,7 @@ test( "In ShowErrors mode choice should be disabled", function() {
 });
 
 test( "Check choice error style in In ShowErrors mode", function() {
-	var gap = $('#cloze1-2');
+	var gap = $('#cloze_1-2');
 	gap.val("ala");
 	var eventBus = ModuleRuntime.playerController.getEventBus();
 	eventBus.sendEvent("ShowErrors", {});
@@ -70,7 +70,7 @@ test( "Check choice error style in In ShowErrors mode", function() {
 });
 
 test( "Check choice correct style in In ShowErrors mode", function() {
-	var gap = $('#cloze1-2');
+	var gap = $('#cloze_1-2');
 	gap.val("correct");
 	var eventBus = ModuleRuntime.playerController.getEventBus();
 	eventBus.sendEvent("ShowErrors", {});
